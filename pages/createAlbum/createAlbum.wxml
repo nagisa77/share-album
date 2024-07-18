@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="content">
+    <view class="weui-cells weui-cells_form">
+      <view class="weui-cell">
+        <view class="weui-cell__hd"><label class="weui-label">相册封面</label></view>
+        <view class="weui-cell__bd">
+          <image class="coverImage"
+            src="{{coverImage ? coverImage : '/images/default_cover.png'}}" 
+            style="width: 100px; height: 100px; background: #f5f5f5;"
+            mode="aspectFill"
+            bindtap="chooseImage"
+          />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd"><label class="weui-label">相册名称</label></view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入相册名称" bindinput="onNameInput" />
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn weui-btn_primary create-button" bindtap="createAlbum">创建相册</button>
+  </view>
+</view>

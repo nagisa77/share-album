@@ -1,0 +1,26 @@
+<!-- album.wxml -->
+<scroll-view class="container" scroll-y>
+  <!-- Header 区域 -->
+  <view class="header">
+    <image src="../../images/image.jpg" class="album-bg"></image>
+    <view class="album-info">
+      <text class="album-name">{{album.name}}</text>
+      <image src="{{album.avatar}}" class="album-avatar"></image>
+    </view>
+  </view>
+  
+  <!-- 内容区域 -->
+  <view class="content">
+    <view wx:for="{{album.contents}}" wx:key="id" class="timeline-item">
+      <view class="timeline-time">{{item.time}}</view>
+      <view class="timeline-content">
+        <view class="user-info">
+          <image src="{{item.userAvatar}}" class="user-avatar"></image>
+          <text class="user-name">{{item.userName}}</text>
+        </view>
+        <text class="content-text">{{item.text}}</text>
+        <image src="{{item.image}}" class="content-image" wx:if="{{item.image}}"></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>
