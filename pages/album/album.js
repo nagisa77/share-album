@@ -12,7 +12,7 @@ Page({
           userName: '用户1',
           userAvatar: '../../images/default-avatar.jpg',
           text: '这是用户1的内容',
-          images: ['../../images/image.jpg']
+          images: ['../../images/image.jpg'] // 控制图片数量不超过6张
         },
         {
           id: 2,
@@ -20,7 +20,54 @@ Page({
           userName: '用户2',
           userAvatar: '../../images/default-avatar.jpg',
           text: '这是用户2的内容',
-          images: ['../../images/image.jpg', '../../images/image.jpg', '../../images/image.jpg']
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 3,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 4,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 5,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 6,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
         }
       ]
     }
