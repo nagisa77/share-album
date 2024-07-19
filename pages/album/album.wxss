@@ -1,4 +1,3 @@
-/* album.wxss */
 @import "../../weui-wxss/dist/style/weui.wxss";
 
 .container {
@@ -21,11 +20,11 @@
 
 .album-info {
   position: absolute;
-  bottom: 10px;
+  bottom: -20px; /* 向下超出背景图30% */
   right: 10px;
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5); /* 添加半透明背景 */
+  /* background: rgba(0, 0, 0, 0.5); 添加半透明背景 */
   padding: 5px;
   border-radius: 5px;
 }
@@ -37,9 +36,10 @@
 }
 
 .album-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px; /* 正方形头像 */
+  /* border: 2px solid white; 给头像添加白色边框 */
 }
 
 .content {
