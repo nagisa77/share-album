@@ -3,6 +3,7 @@
   <!-- Header 区域 -->
   <view class="header">
     <image src="../../images/image.jpg" class="album-bg"></image>
+    <view class="album-bg-overlay"></view> <!-- 添加蒙层 -->
     <view class="album-info">
       <text class="album-name">{{album.name}}</text>
       <image src="{{album.avatar}}" class="album-avatar"></image>
