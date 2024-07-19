@@ -16,7 +16,8 @@ exports.main = async (event, context) => {
         coverImageID: coverImageID,
         createdAt: new Date(),
         members: [authorOpenID], // 成员列表，包含作者的 openid
-        author: authorOpenID // 记录作者的 openid
+        author: authorOpenID, // 记录作者的 openid
+        sendRecords: [] // 初始化发送记录为空数组
       }
     })
     return {

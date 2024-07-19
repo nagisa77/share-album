@@ -1,5 +1,5 @@
 <!-- album.wxml -->
-<scroll-view class="container" scroll-y>
+<view class="container">
   <!-- Header 区域 -->
   <view class="header">
     <image src="../../images/image.jpg" class="album-bg"></image>
@@ -10,8 +10,8 @@
   </view>
   
   <!-- 内容区域 -->
-  <view class="content">
-    <view wx:for="{{album.contents}}" wx:key="id" class="timeline-item">
+  <view class="content" scroll-y>
+    <view wx:for="{{album.records}}" wx:key="id" class="timeline-item">
       <view class="timeline-time">{{item.time}}</view>
       <view class="timeline-content">
         <view class="user-info">
@@ -19,8 +19,10 @@
           <text class="user-name">{{item.userName}}</text>
         </view>
         <text class="content-text">{{item.text}}</text>
-        <image src="{{item.image}}" class="content-image" wx:if="{{item.image}}"></image>
+        <view class="images-container">
+          <image wx:for="{{item.images}}" wx:key="index" src="{{item}}" class="content-image"></image>
+        </view>
       </view>
     </view>
   </view>
-</scroll-view>
+</view>

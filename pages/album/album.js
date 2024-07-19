@@ -5,14 +5,14 @@ Page({
     album: {
       name: '默认相册名称',
       avatar: '../../images/default-avatar.jpg',
-      contents: [
+      records: [
         {
           id: 1,
           time: '2024-07-18 14:00',
           userName: '用户1',
           userAvatar: '../../images/default-avatar.jpg',
           text: '这是用户1的内容',
-          image: '../../images/image.jpg'
+          images: ['../../images/image.jpg']
         },
         {
           id: 2,
@@ -20,7 +20,7 @@ Page({
           userName: '用户2',
           userAvatar: '../../images/default-avatar.jpg',
           text: '这是用户2的内容',
-          image: '../../images/image.jpg'
+          images: ['../../images/image.jpg', '../../images/image.jpg', '../../images/image.jpg']
         }
       ]
     }

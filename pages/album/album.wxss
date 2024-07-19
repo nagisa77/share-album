@@ -4,13 +4,12 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100vh; /* 设定高度以便滚动 */
 }
 
 .header {
   width: 100%;
   position: relative;
+  /* flex: 0 0 auto; 保持header的大小固定 */
 }
 
 .album-bg {
@@ -42,6 +41,7 @@
 }
 
 .content {
+  flex: 1 1 auto; /* 使内容区域填满剩余空间 */
   width: 100%;
   padding: 10px;
 }
@@ -87,7 +87,14 @@
   margin-bottom: 5px;
 }
 
+.images-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .content-image {
-  width: 100%;
+  width: 100px;
+  height: 100px;
   border-radius: 5px;
 }
