@@ -14,10 +14,11 @@ exports.main = async (event, context) => {
       data: {
         name: name,
         coverImageID: coverImageID,
+        backgroundImageID: '', 
         createdAt: new Date(),
-        members: [authorOpenID], // 成员列表，包含作者的 openid
-        author: authorOpenID, // 记录作者的 openid
-        sendRecords: [] // 初始化发送记录为空数组
+        members: [authorOpenID], 
+        author: authorOpenID,
+        sendRecords: [] 
       }
     })
     return {

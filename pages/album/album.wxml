@@ -1,9 +1,8 @@
-<!-- album.wxml -->
 <view class="container">
   <!-- Header 区域 -->
-  <view class="header">
-    <block wx:if="{{album.default_album_background}}">
-      <image src="{{album.default_album_background}}" class="album-bg"></image>
+  <view class="header" bindtap="onAlbumBackgroundClicked">
+    <block wx:if="{{album.album_background_cover}}">
+      <image src="{{album.album_background_cover}}" class="album-bg"></image>
     </block>
     <block wx:else>
       <view class="album-bg default-bg">
@@ -90,4 +89,13 @@
       </view>
     </block>
   </view>
+
+  <!-- Loading 状态 -->
+  <block wx:if="{{loading}}">
+    <view class="weui-mask_transparent"></view>
+    <view class="weui-toast">
+      <view class="weui-loading weui-icon_toast"></view>
+      <view class="weui-toast__content">上传中...</view>
+    </view>
+  </block>
 </view>
