@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/album/album",
-    "pages/createAlbum/createAlbum"
+    "pages/createAlbum/createAlbum", 
+    "pages/album/album"
   ],
   "window": {
     "navigationBarTextStyle": "black",

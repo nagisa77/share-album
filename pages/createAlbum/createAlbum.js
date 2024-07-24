@@ -58,8 +58,9 @@ Page({
               title: '创建成功',
               icon: 'success',
               success: () => {
+                wx.setStorageSync('albumID', updateAlbumRes.result.data.albumId);
                 wx.redirectTo({
-                  url: `/pages/album/album?albumId=${updateAlbumRes.albumId}`
+                  url: `/pages/album/album?albumId=${updateAlbumRes.result.data.albumId}`
                 });
               }
             });

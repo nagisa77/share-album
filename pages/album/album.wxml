@@ -2,7 +2,7 @@
   <!-- Header 区域 -->
   <view class="header" bindtap="onAlbumBackgroundClicked">
     <block wx:if="{{album.album_background_cover}}">
-      <image src="{{album.album_background_cover}}" class="album-bg"></image>
+      <image src="{{album.album_background_cover}}" class="album-bg" mode="aspectFill"></image>
     </block>
     <block wx:else>
       <view class="album-bg default-bg">
@@ -89,7 +89,7 @@
       </view>
     </block>
   </view>
-
+  
   <!-- Loading 状态 -->
   <block wx:if="{{loading}}">
     <view class="weui-mask_transparent"></view>
