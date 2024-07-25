@@ -84,7 +84,40 @@ Page({
   },
 
   onCameraIconClicked: function() {
-
+    wx.showActionSheet({
+      itemList: ['拍摄', '从手机相册选择'],
+      itemColor: '#000000',
+      success: res => {
+        if (!res.cancel) {
+          if (res.tapIndex === 0) {
+            wx.chooseImage({
+              count: 1,
+              sizeType: ['original', 'compressed'],
+              sourceType: ['camera'],
+              success: res => {
+                var tempFilePaths = res.tempFilePaths;
+              },
+              fail: () => {
+              }
+            });
+          } else if (res.tapIndex === 1) {
+            wx.chooseImage({
+              count: 6,
+              sizeType: ['original', 'compressed'],
+              sourceType: ['album'],
+              success: res => {
+                var tempFilePaths = res.tempFilePaths;
+              },
+              fail: () => {
+              }
+            });
+          }
+        }
+      },
+      fail: res => {
+        console.log(res.errMsg);
+      }
+    });
   },
   
   onLoad: function(options) {
