@@ -12,7 +12,7 @@
     <view class="album-bg-overlay"></view>
     <view class="album-info">
       <text class="album-name">{{album.name}}</text>
-      <image src="{{album.avatar}}" class="album-avatar"></image>
+      <image src="{{album.avatar}}" class="album-avatar" mode="aspectFill"></image>
     </view>
   </view>
   

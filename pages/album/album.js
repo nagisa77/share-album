@@ -9,7 +9,7 @@ Page({
     },
     loading: false // 用于显示 loading 状态
   },
-  
+
   onLoad: function(options) {
     if (options.albumId) {
       console.info(`加入相册: ${options.albumId}`);
@@ -22,7 +22,35 @@ Page({
       // todo: 处理异常逻辑
     }
   },
-  
+
+  loadAlbum: function(albumId) {
+    wx.cloud.callFunction({
+      name: 'getAlbumInfo',
+      data: {
+        albumId: albumId
+      },
+      success: res => {
+        if (res.result.success) {
+          console.log('获取相册信息成功', res.result.data);
+          this.setData({
+            albumId: res.result.data._id,
+            album: {
+              name: res.result.data.name,
+              avatar: res.result.data.coverImageID,
+              album_background_cover: res.result.data.backgroundImageID,
+              records: res.result.data.sendRecords,
+            }
+          });
+        } else {
+          console.error('获取相册信息失败', res.result.errorMessage);
+        }
+      },
+      fail: err => {
+        console.error('加载相册失败', err);
+      }
+    });
+  },
+
   onAlbumBackgroundClicked: function() {
     wx.showActionSheet({
       itemList: ['选择照片', '相机'],
@@ -64,7 +92,7 @@ Page({
       }
     });
   },
-  
+
   uploadImage: function(filePath) {
     const cloudPath = `album-background/${this.data.albumId}-${Date.now()}-${Math.floor(Math.random(0, 1) * 1000)}.png`;
     wx.cloud.uploadFile({
@@ -85,7 +113,7 @@ Page({
       }
     });
   },
-  
+
   updateAlbumBackground: function(fileID) {
     wx.cloud.callFunction({
       name: 'updateAlbumBackground',
@@ -113,24 +141,6 @@ Page({
           icon: 'none',
           duration: 2000
         });
-      }
-    });
-  },
-  
-  loadAlbum: function(albumId) {
-    wx.cloud.callFunction({
-      name: 'getAlbum',
-      data: {
-        albumId: albumId
-      },
-      success: res => {
-        console.log(res.result);
-        this.setData({
-          album: res.result.data
-        });
-      },
-      fail: err => {
-        console.error('加载相册失败', err);
       }
     });
   }
