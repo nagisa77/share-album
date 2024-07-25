@@ -5,11 +5,88 @@ Page({
       name: '默认相册名称',
       avatar: '../../images/default-avatar.jpg',
       album_background_cover: '',
-      records: []
+      records: [
+        {
+          id: 1,
+          time: '2024-07-18 14:00',
+          userName: '用户1',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户1的内容',
+          images: ['../../images/image.jpg'] // 控制图片数量不超过6张
+        },
+        {
+          id: 2,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 3,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 4,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 5,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
+        },
+        {
+          id: 6,
+          time: '2024-07-18 15:00',
+          userName: '用户2',
+          userAvatar: '../../images/default-avatar.jpg',
+          text: '这是用户2的内容',
+          images: ['../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg', 
+                   '../../images/image.jpg']
+        }
+      ]    
     },
-    loading: false // 用于显示 loading 状态
+    loading: false, // 用于显示 loading 状态
+    topBarOpacity: 0 // 初始透明度为0
   },
 
+  onScroll: function(event) {
+    const scrollTop = event.detail.scrollTop;
+    const opacity = Math.min(1, scrollTop / 100); // 计算透明度，最大值为1
+    this.setData({
+      topBarOpacity: opacity
+    });
+  },
+
+  onCameraIconClicked: function() {
+
+  },
+  
   onLoad: function(options) {
     if (options.albumId) {
       console.info(`加入相册: ${options.albumId}`);
@@ -32,15 +109,15 @@ Page({
       success: res => {
         if (res.result.success) {
           console.log('获取相册信息成功', res.result.data);
-          this.setData({
-            albumId: res.result.data._id,
-            album: {
-              name: res.result.data.name,
-              avatar: res.result.data.coverImageID,
-              album_background_cover: res.result.data.backgroundImageID,
-              records: res.result.data.sendRecords,
-            }
-          });
+          // this.setData({
+          //   albumId: res.result.data._id,
+          //   album: {
+          //     name: res.result.data.name,
+          //     avatar: res.result.data.coverImageID,
+          //     album_background_cover: res.result.data.backgroundImageID,
+          //     records: res.result.data.sendRecords,
+          //   }
+          // });
         } else {
           console.error('获取相册信息失败', res.result.errorMessage);
         }
