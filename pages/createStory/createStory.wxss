@@ -1,6 +1,11 @@
 @import "../../weui-wxss/dist/style/weui.wxss";
 
+.content-offset {
+  margin-top: 50px; /* 向下偏移 50px */
+}
+
 .image-grid {
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

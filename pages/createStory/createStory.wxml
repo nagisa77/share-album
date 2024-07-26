@@ -1,4 +1,4 @@
-<view class="weui-form">
+<view class="weui-form content-offset">
   <view class="weui-cells weui-cells_form">
     <view class="weui-cell weui-cell-textarea">
       <textarea placeholder="那一刻的想法..." class="weui-textarea input-area"></textarea>

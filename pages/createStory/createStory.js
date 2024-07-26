@@ -24,7 +24,55 @@ Page({
 
   addImage() {
     // 添加图片的逻辑
-    console.log('Add image');
+    const remainingCount = 6 - this.data.imagePaths.length;
+
+    if (remainingCount <= 0) {
+      console.assert(false, "已经达到六张图片的上限");
+      return;
+    }
+
+    wx.showActionSheet({
+      itemList: ['拍摄', '从手机相册选择'],
+      itemColor: '#000000',
+      success: res => {
+        if (!res.cancel) {
+          if (res.tapIndex === 0) {
+            wx.chooseImage({
+              count: remainingCount,
+              sizeType: ['original', 'compressed'],
+              sourceType: ['camera'],
+              success: res => {
+                const tempFilePaths = res.tempFilePaths;
+                this.setData({
+                  imagePaths: this.data.imagePaths.concat(tempFilePaths)
+                });
+              },
+              fail: () => {
+                console.error('拍摄失败');
+              }
+            });
+          } else if (res.tapIndex === 1) {
+            wx.chooseImage({
+              count: remainingCount,
+              sizeType: ['original', 'compressed'],
+              sourceType: ['album'],
+              success: res => {
+                const tempFilePaths = res.tempFilePaths;
+                this.setData({
+                  imagePaths: this.data.imagePaths.concat(tempFilePaths)
+                });
+              },
+              fail: () => {
+                console.error('从相册选择图片失败');
+              }
+            });
+          }
+        }
+      },
+      fail: res => {
+        console.log(res.errMsg);
+      }
+    });
   },
 
   submitStory() {
