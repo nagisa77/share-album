@@ -4,7 +4,8 @@ Page({
     openID: wx.getStorageSync('openID'),
     imageSize: 0,
     inputText: '',
-    albumID: wx.getStorageSync('albumID')
+    albumID: wx.getStorageSync('albumID'),
+    loading: false
   },
 
   onLoad(options) {
@@ -22,6 +23,12 @@ Page({
         this.setData({ imagePaths: paths });
       }
     }
+  },
+
+  handleInput(e) {
+    this.setData({
+      inputText: e.detail.value
+    });
   },
 
   addImage() {
@@ -79,6 +86,9 @@ Page({
   submitStory() {
     const { imagePaths, openID, inputText, albumID } = this.data;
 
+    // 显示loading状态
+    this.setData({ loading: true });
+
     // 上传图片并获取 imageIDs
     const uploadTasks = imagePaths.map((path) => {
       return wx.cloud.uploadFile({
@@ -102,11 +112,14 @@ Page({
         });
       })
       .then(res => {
+        this.setData({ loading: false });
         if (res.result.success) {
           wx.showToast({
             title: '发布成功',
             icon: 'success'
           });
+          // 成功后返回上一页
+          wx.navigateBack();
         } else {
           wx.showToast({
             title: '发布失败',
@@ -115,11 +128,16 @@ Page({
         }
       })
       .catch(error => {
+        this.setData({ loading: false });
         wx.showToast({
           title: '发布失败',
           icon: 'none'
         });
         console.error('Error:', error);
       });
+  },
+
+  goBack() {
+    wx.navigateBack();
   }
 });

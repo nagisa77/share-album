@@ -1,7 +1,13 @@
 <view class="weui-form content-offset">
+  <!-- 返回按钮 -->
+  <view class="top-bar">
+    <view class="top-bar-content" bindtap="goBack">
+      <icon class="weui-icon-back-arrow" size="50"></icon>
+    </view>
+  </view>
   <view class="weui-cells weui-cells_form">
     <view class="weui-cell weui-cell-textarea">
-      <textarea placeholder="那一刻的想法..." class="weui-textarea input-area"></textarea>
+      <textarea placeholder="那一刻的想法..." class="weui-textarea input-area" bindinput="handleInput"></textarea>
     </view>
   </view>
   <view class="image-grid">
@@ -21,4 +27,13 @@
   <view class="weui-btn-area">
     <button class="weui-btn weui-btn_primary" bindtap="submitStory">发表</button>
   </view>
+
+  <!-- Loading 状态 -->
+  <block wx:if="{{loading}}">
+    <view class="weui-mask_transparent"></view>
+    <view class="weui-toast">
+      <view class="weui-loading weui-icon_toast"></view>
+      <view class="weui-toast__content">上传中...</view>
+    </view>
+  </block>
 </view>

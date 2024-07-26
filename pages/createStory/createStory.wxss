@@ -4,6 +4,19 @@
   margin-top: 50px; /* 向下偏移 50px */
 }
 
+.top-bar {
+  position: absolute;
+  top: 55px;
+  left: 30px;
+  z-index: 999;
+}
+
+.top-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .image-grid {
   margin-top: 20px;
   display: flex;
