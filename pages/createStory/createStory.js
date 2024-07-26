@@ -1,7 +1,11 @@
 Page({
   data: {
     imagePaths: [],
-    imageSize: 0
+    imageSize: 0,
+    userName: '用户1', // 示例用户名
+    userAvatar: '', // 示例用户头像
+    inputText: '', // 文本输入内容
+    albumID: 'your-album-id' // 示例相册ID
   },
 
   onLoad(options) {
@@ -11,7 +15,6 @@ Page({
       imageSize
     });
 
-    // 可以在这里处理传入的 filePaths 参数
     if (options.filePaths) {
       const paths = JSON.parse(options.filePaths);
       if (paths.length > 6) {
@@ -23,7 +26,6 @@ Page({
   },
 
   addImage() {
-    // 添加图片的逻辑
     const remainingCount = 6 - this.data.imagePaths.length;
 
     if (remainingCount <= 0) {
@@ -76,7 +78,50 @@ Page({
   },
 
   submitStory() {
-    // 发表逻辑
-    console.log('Submit story');
+    const { imagePaths, userName, userAvatar, inputText, albumID } = this.data;
+
+    // 上传图片并获取 imageIDs
+    const uploadTasks = imagePaths.map((path) => {
+      return wx.cloud.uploadFile({
+        cloudPath: `story_images/${Date.now()}-${Math.floor(Math.random(0, 1) * 1000)}`,
+        filePath: path,
+      });
+    });
+
+    Promise.all(uploadTasks)
+      .then(results => {
+        const imageIDs = results.map(res => res.fileID);
+
+        return wx.cloud.callFunction({
+          name: 'createStory',
+          data: {
+            albumID: albumID,
+            userName: userName,
+            userAvatar: userAvatar,
+            text: inputText,
+            imageIDs: imageIDs
+          }
+        });
+      })
+      .then(res => {
+        if (res.result.success) {
+          wx.showToast({
+            title: '发布成功',
+            icon: 'success'
+          });
+        } else {
+          wx.showToast({
+            title: '发布失败',
+            icon: 'none'
+          });
+        }
+      })
+      .catch(error => {
+        wx.showToast({
+          title: '发布失败',
+          icon: 'none'
+        });
+        console.error('Error:', error);
+      });
   }
 });
