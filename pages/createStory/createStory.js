@@ -1,11 +1,10 @@
 Page({
   data: {
     imagePaths: [],
+    openID: wx.getStorageSync('openID'),
     imageSize: 0,
-    userName: '用户1', // 示例用户名
-    userAvatar: '', // 示例用户头像
-    inputText: '', // 文本输入内容
-    albumID: 'your-album-id' // 示例相册ID
+    inputText: '',
+    albumID: wx.getStorageSync('albumID')
   },
 
   onLoad(options) {
@@ -78,7 +77,7 @@ Page({
   },
 
   submitStory() {
-    const { imagePaths, userName, userAvatar, inputText, albumID } = this.data;
+    const { imagePaths, openID, inputText, albumID } = this.data;
 
     // 上传图片并获取 imageIDs
     const uploadTasks = imagePaths.map((path) => {
@@ -96,8 +95,7 @@ Page({
           name: 'createStory',
           data: {
             albumID: albumID,
-            userName: userName,
-            userAvatar: userAvatar,
+            openID: openID,
             text: inputText,
             imageIDs: imageIDs
           }

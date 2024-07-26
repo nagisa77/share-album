@@ -5,7 +5,7 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const { albumID, userName, userAvatar, text, imageIDs } = event
+  const { albumID, openID, text, imageIDs } = event
 
   // 获取当前时间
   const time = new Date().toISOString().replace('T', ' ').substr(0, 16)
@@ -13,8 +13,7 @@ exports.main = async (event, context) => {
   // 创建新的记录
   const newRecord = {
     time: time,
-    userName: userName,
-    userAvatar: userAvatar,
+    openID: openID, 
     text: text,
     images: imageIDs,
   }

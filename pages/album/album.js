@@ -83,15 +83,41 @@ Page({
       success: res => {
         if (res.result.success) {
           console.log('获取相册信息成功', res.result.data);
-          this.setData({
-            albumId: res.result.data._id,
-            album: {
-              name: res.result.data.name,
-              avatar: res.result.data.coverImageID,
-              album_background_cover: res.result.data.backgroundImageID,
-              records: res.result.data.sendRecords,
-            }
+          
+          const albumData = res.result.data;
+          const records = albumData.sendRecords;
+          
+          const promises = records.map(record => {
+            return wx.cloud.callFunction({
+              name: 'getUserInfo',
+              data: {
+                openID: record.openID
+              }
+            }).then(userRes => {
+              if (userRes.result.success) {
+                record.userAvatar = userRes.result.data.avatarUrl;
+                record.userName = userRes.result.data.nickName;
+              } else {
+                console.error('获取用户信息失败', userRes.result.errorMessage);
+              }
+              return record;
+            });
           });
+  
+          Promise.all(promises).then(updatedRecords => {
+            this.setData({
+              albumId: albumData._id,
+              album: {
+                name: albumData.name,
+                avatar: albumData.coverImageID,
+                album_background_cover: albumData.backgroundImageID,
+                records: updatedRecords
+              }
+            });
+          }).catch(err => {
+            console.error('加载用户信息失败', err);
+          });
+  
         } else {
           console.error('获取相册信息失败', res.result.errorMessage);
         }
