@@ -8,16 +8,16 @@ App({
       });
     }
 
-    const albumId = wx.getStorageSync('albumID');
-    if (albumId) {
-      wx.redirectTo({
-        url: `/pages/album/album?albumId=${albumId}`
-      });
-    } else {
-      wx.redirectTo({
-        url: '/pages/createAlbum/createAlbum'
-      });
-    }
+    // const albumId = wx.getStorageSync('albumID');
+    // if (albumId) {
+    //   wx.redirectTo({
+    //     url: `/pages/album/album?albumId=${albumId}`
+    //   });
+    // } else {
+    //   wx.redirectTo({
+    //     url: '/pages/createAlbum/createAlbum'
+    //   });
+    // }
 
     this.globalData = {}
   }

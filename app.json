@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/createAlbum/createAlbum", 
+    "pages/createStory/createStory",
+    "pages/createAlbum/createAlbum",
     "pages/album/album"
   ],
   "window": {

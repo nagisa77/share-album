@@ -107,8 +107,13 @@ Page({
               sourceType: ['album'],
               success: res => {
                 var tempFilePaths = res.tempFilePaths;
+                // 调起 story 页面，并传递选中的图片路径
+                wx.navigateTo({
+                  url: `/pages/createStory/createStory?filePaths=${JSON.stringify(tempFilePaths)}`,
+                });
               },
               fail: () => {
+                console.error('Image selection failed');
               }
             });
           }

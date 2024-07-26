@@ -1,0 +1,18 @@
+@import "../../weui-wxss/dist/style/weui.wxss";
+
+.container {
+  position: relative; /* Establishes a positioning context for the button */
+  padding: 20rpx; /* Adjust as needed */
+}
+
+.publish-btn {
+  position: absolute;
+  top: 20rpx; /* Distance from the top of the container */
+  right: 20rpx; /* Distance from the right edge of the container */
+  display: inline-block; /* Width based on content */
+  font-weight: bold;
+  padding: 0 10rpx; /* Horizontal padding for spacing */
+  line-height: 40rpx; /* Vertical alignment if needed */
+  white-space: nowrap; /* Prevent text wrapping */
+  min-width: 0; /* Ensure width is not constrained */
+}
