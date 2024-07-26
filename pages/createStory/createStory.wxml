@@ -1,4 +1,24 @@
-<!-- story.wxml -->
-<view class="container">
-  <button class="weui-btn weui-btn_primary publish-btn">发表</button>
+<view class="weui-form">
+  <view class="weui-cells weui-cells_form">
+    <view class="weui-cell weui-cell-textarea">
+      <textarea placeholder="那一刻的想法..." class="weui-textarea input-area"></textarea>
+    </view>
+  </view>
+  <view class="image-grid">
+    <block wx:for="{{imagePaths}}" wx:key="*this">
+      <view class="image-item-container" style="width:{{imageSize}}px; height:{{imageSize}}px;">
+        <image src="{{item}}" class="image-item" mode="aspectFill"></image>
+      </view>
+    </block>
+    <block wx:if="{{imagePaths.length < 6}}">
+      <view class="image-item-container" style="width:{{imageSize}}px; height:{{imageSize}}px;" bindtap="addImage">
+        <view class="image-item">
+          <text>+</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn weui-btn_primary" bindtap="submitStory">发表</button>
+  </view>
 </view>
