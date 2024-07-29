@@ -19,6 +19,14 @@ Page({
     });
   },
 
+  // 预览图片功能
+  previewImage(e) {
+    const current = e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: `/pages/previewStory/previewStory?imagePaths=${JSON.stringify(this.data.imagePaths)}&current=${current}`
+    });
+  },
+
   onCameraIconClicked: function() {
     wx.showActionSheet({
       itemList: ['拍摄', '从手机相册选择'],
@@ -95,8 +103,8 @@ Page({
               }
             }).then(userRes => {
               if (userRes.result.success) {
-                record.userAvatar = userRes.result.data.avatarUrl;
-                record.userName = userRes.result.data.nickName;
+                record.userName = userRes.result.data.userName;
+                record.userAvatar = userRes.result.data.userAvatarUrl;
               } else {
                 console.error('获取用户信息失败', userRes.result.errorMessage);
               }
@@ -126,6 +134,10 @@ Page({
         console.error('加载相册失败', err);
       }
     });
+  },
+
+  refreshPageData: function() {
+    this.loadAlbum(this.data.albumId); // 重新加载相册数据
   },
 
   onAlbumBackgroundClicked: function() {
@@ -220,5 +232,10 @@ Page({
         });
       }
     });
+  },
+
+  onPullDownRefresh: function() {
+    this.loadAlbum(this.data.albumId); // 重新加载相册数据
+    wx.stopPullDownRefresh(); // 停止下拉刷新
   }
 });

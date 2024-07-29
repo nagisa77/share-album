@@ -118,6 +118,10 @@ Page({
             title: '发布成功',
             icon: 'success'
           });
+          // 调用上一页面的刷新方法
+          const pages = getCurrentPages();
+          const prevPage = pages[pages.length - 2];
+          prevPage.refreshPageData();
           // 成功后返回上一页
           wx.navigateBack();
         } else {

@@ -1,0 +1,10 @@
+<view class="container">
+  <swiper class="swiper-container" indicator-dots="true" autoplay="false" interval="5000" duration="500" current="{{current}}" bindchange="onSwiperChange">
+    <block wx:for="{{imagePaths}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item}}" class="swiper-image" mode="aspectFit"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <button class="close-button" bindtap="closePreview">关闭预览</button>
+</view>

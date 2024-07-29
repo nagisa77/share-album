@@ -10,16 +10,16 @@ exports.main = async (event, context) => {
 
   try {
     // 根据 openID 查询特定用户信息
-    const userRecord = await db.collection('users').where({ openid: openID }).get()
+    const userRecord = await db.collection('users').where({ openID: openID }).get()
     if (userRecord.data.length > 0) {
       return {
         success: true,
-        data: userRecord.data[0].userInfo
+        data: userRecord.data[0]
       }
     } else {
       return {
         success: false,
-        errorMessage: '用户信息未找到'
+        errorMessage: `用户信息未找到: ${openID}`
       }
     }
   } catch (error) {

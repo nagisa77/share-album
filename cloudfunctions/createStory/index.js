@@ -1,4 +1,3 @@
-// 云函数入口文件
 const cloud = require('wx-server-sdk')
 
 cloud.init()
@@ -18,12 +17,12 @@ exports.main = async (event, context) => {
     images: imageIDs,
   }
 
-  // 将发布内容添加到 sendrecords 数组中
+  // 将发布内容添加到 sendRecords 数组的最前面
   const db = cloud.database()
   try {
     const res = await db.collection('albums').doc(albumID).update({
       data: {
-        sendRecords: db.command.push(newRecord)
+        sendRecords: db.command.unshift(newRecord)
       }
     })
     return {
