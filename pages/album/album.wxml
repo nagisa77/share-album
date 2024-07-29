@@ -34,54 +34,54 @@
           <text class="content-text">{{item.text}}</text>
           <view class="images-container" wx:if="{{item.images.length > 0}}">
             <block wx:if="{{item.images.length == 1}}">
-              <image src="{{item.images[0]}}" class="content-image large" mode="aspectFill" bindtap="previewImage" data-index="0"></image>
+              <image src="{{item.images[0]}}" class="content-image large" mode="aspectFill" bindtap="previewImage" data-index="0" data-record-index="{{index}}"></image>
             </block>
             <block wx:if="{{item.images.length == 2}}">
               <view class="row">
-                <image src="{{item.images[0]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="0"></image>
-                <image src="{{item.images[1]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="1"></image>
+                <image src="{{item.images[0]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="0" data-record-index="{{index}}"></image>
+                <image src="{{item.images[1]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="1" data-record-index="{{index}}"></image>
               </view>
             </block>
             <block wx:if="{{item.images.length == 3}}">
               <view class="row">
-                <image src="{{item.images[0]}}" class="content-image large" mode="aspectFill" bindtap="previewImage" data-index="0"></image>
+                <image src="{{item.images[0]}}" class="content-image large" mode="aspectFill" bindtap="previewImage" data-index="0" data-record-index="{{index}}"></image>
               </view>
               <view class="row">
-                <image src="{{item.images[1]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="1"></image>
-                <image src="{{item.images[2]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="2"></image>
+                <image src="{{item.images[1]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="1" data-record-index="{{index}}"></image>
+                <image src="{{item.images[2]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="2" data-record-index="{{index}}"></image>
               </view>
             </block>
             <block wx:if="{{item.images.length == 4}}">
               <view class="row">
-                <image src="{{item.images[0]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="0"></image>
-                <image src="{{item.images[1]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="1"></image>
+                <image src="{{item.images[0]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="0" data-record-index="{{index}}"></image>
+                <image src="{{item.images[1]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="1" data-record-index="{{index}}"></image>
               </view>
               <view class="row">
-                <image src="{{item.images[2]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="2"></image>
-                <image src="{{item.images[3]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="3"></image>
+                <image src="{{item.images[2]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="2" data-record-index="{{index}}"></image>
+                <image src="{{item.images[3]}}" class="content-image medium" mode="aspectFill" bindtap="previewImage" data-index="3" data-record-index="{{index}}"></image>
               </view>
             </block>
             <block wx:if="{{item.images.length == 5}}">
               <view class="row">
-                <image src="{{item.images[0]}}" class="content-image large" mode="aspectFill" bindtap="previewImage" data-index="0"></image>
+                <image src="{{item.images[0]}}" class="content-image large" mode="aspectFill" bindtap="previewImage" data-index="0" data-record-index="{{index}}"></image>
               </view>
               <view class="row">
-                <image src="{{item.images[1]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="1"></image>
-                <image src="{{item.images[2]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="2"></image>
-                <image src="{{item.images[3]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="3"></image>
-                <image src="{{item.images[4]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="4"></image>
+                <image src="{{item.images[1]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="1" data-record-index="{{index}}"></image>
+                <image src="{{item.images[2]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="2" data-record-index="{{index}}"></image>
+                <image src="{{item.images[3]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="3" data-record-index="{{index}}"></image>
+                <image src="{{item.images[4]}}" class="content-image small" mode="aspectFill" bindtap="previewImage" data-index="4" data-record-index="{{index}}"></image>
               </view>
             </block>
             <block wx:if="{{item.images.length == 6}}">
               <view class="row">
-                <image src="{{item.images[0]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="0"></image>
-                <image src="{{item.images[1]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="1"></image>
-                <image src="{{item.images[2]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="2"></image>
+                <image src="{{item.images[0]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="0" data-record-index="{{index}}"></image>
+                <image src="{{item.images[1]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="1" data-record-index="{{index}}"></image>
+                <image src="{{item.images[2]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="2" data-record-index="{{index}}"></image>
               </view>
               <view class="row">
-                <image src="{{item.images[3]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="3"></image>
-                <image src="{{item.images[4]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="4"></image>
-                <image src="{{item.images[5]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="5"></image>
+                <image src="{{item.images[3]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="3" data-record-index="{{index}}"></image>
+                <image src="{{item.images[4]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="4" data-record-index="{{index}}"></image>
+                <image src="{{item.images[5]}}" class="content-image mediumx" mode="aspectFill" bindtap="previewImage" data-index="5" data-record-index="{{index}}"></image>
               </view>
             </block>
           </view>

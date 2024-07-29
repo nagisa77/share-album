@@ -1,31 +1,29 @@
-@import "../../weui-wxss/dist/style/weui.wxss";
-
 .container {
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+.top-bar {
+  position: absolute;
+  top: 55px;
+  left: 30px;
+  z-index: 999;
+}
+
+.top-bar-content {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #000;
+  justify-content: center;
 }
 
-.swiper-container {
+.swiper {
   width: 100%;
   height: 100%;
 }
 
-.swiper-image {
+.image {
   width: 100%;
   height: 100%;
-}
-
-.close-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
+  object-fit: contain;
 }

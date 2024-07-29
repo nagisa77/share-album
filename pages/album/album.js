@@ -21,11 +21,14 @@ Page({
 
   // 预览图片功能
   previewImage(e) {
-    const current = e.currentTarget.dataset.index;
+    const imageIndex = e.currentTarget.dataset.index;
+    const recordIndex = e.currentTarget.dataset.recordIndex;
+    const imagePaths = this.data.album.records[recordIndex].images;
+    
     wx.navigateTo({
-      url: `/pages/previewStory/previewStory?imagePaths=${JSON.stringify(this.data.imagePaths)}&current=${current}`
+      url: `/pages/previewStory/previewStory?imagePaths=${JSON.stringify(imagePaths)}&current=${imageIndex}`
     });
-  },
+  }, 
 
   onCameraIconClicked: function() {
     wx.showActionSheet({
