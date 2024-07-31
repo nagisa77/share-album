@@ -2,7 +2,7 @@
   <!-- Top Bar 区域 -->
   <view class="top-bar" style="opacity: {{topBarOpacity}}"></view>
   <view class="top-bar-content" bindtap="onCameraIconClicked">
-    <icon type="camera" class="weui-icon-camera"></icon>
+    <icon type="camera" class="weui-icon-camera" style="color: {{topBarOpacity > 0.3 ? 'black' : 'white'}};"></icon>
   </view>
   <!-- Header 区域 -->
   <view class="header" bindtap="onAlbumBackgroundClicked">
@@ -14,6 +14,7 @@
         <text class="default-bg-text">点击以设置封面:)</text>
       </view>
     </block>
+    <view class="album-bg-overlay-top"></view>
     <view class="album-bg-overlay"></view>
     <view class="album-info">
       <text class="album-name">{{album.name}}</text>
