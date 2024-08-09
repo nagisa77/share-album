@@ -11,6 +11,19 @@ Page({
     topBarOpacity: 0 // 初始透明度为0
   },
 
+  onShareAppMessage: function (options) {
+    // 获取当前页面的路径
+    const path = this.route;
+    // 假设你的相册 ID 存储在页面的 data 中
+    const albumId = this.data.albumId;
+
+    return {
+      title: '快来看我的相册！',
+      path: `${path}?albumId=${this.data.albumId}&share=1`,
+      imageUrl: this.data.album.avatar 
+    };
+  },
+
   onScroll: function(event) {
     const scrollTop = event.detail.scrollTop;
     const opacity = Math.min(1, scrollTop / 100); // 计算透明度，最大值为1
@@ -83,7 +96,76 @@ Page({
       console.error("未携带相册id进入页面");
       // todo: 处理异常逻辑
     }
+
+    if (options.share == 1) {
+      console.log('is from share!');
+      wx.cloud.callFunction({
+        name: 'login',
+        success: res => {
+          if (res.result && res.result.success) {
+            wx.setStorageSync('openID', res.result.openid)
+            console.log('openID存储成功: ', res.result.openid)
+
+            // 确认user 是否存在，不存在要补充信息
+            return wx.cloud.callFunction({
+              name: 'getUserInfo',
+              data: {
+                openID: res.result.openid
+              }
+            }).then(userRes => {
+              if (userRes.result.success) {
+                console.info('用户已经存在，加入此相册');
+
+                this.joinAlbum(res.result.openid, options.albumId); 
+              } else {
+                console.info('用户不存在，要求用户提供信息后加入相册');
+              }
+            });
+          } else {
+            console.error('调用云函数失败: ', res)
+          }
+        },
+        fail: err => {
+          console.error('调用云函数失败: ', err)
+        }
+      })
+    }
   },
+
+  joinAlbum: function(openID, albumId) {
+    wx.cloud.callFunction({
+      name: 'joinAlbum',
+      data: {
+        openID: openID,
+        albumId: albumId
+      },
+      success: function(res) {
+        if (res.result.success) {
+          wx.showToast({
+            title: '加入相册成功',
+            icon: 'success',
+            duration: 2000
+          });
+          console.info("加入相册成功"); 
+        } else {
+          wx.showToast({
+            title: '加入失败: ' + res.result.errorMessage,
+            icon: 'none',
+            duration: 2000
+          });
+          console.info('加入失败: ' + res.result.errorMessage); 
+        }
+      },
+      fail: function(error) {
+        wx.showToast({
+          title: '调用失败',
+          icon: 'none',
+          duration: 2000
+        });
+        console.error("调用失败：", error);
+      }
+    });
+  }, 
 
   loadAlbum: function(albumId) {
     wx.cloud.callFunction({
