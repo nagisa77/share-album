@@ -1,20 +1,24 @@
+@import "../../weui-wxss/dist/style/weui.wxss";
+
 .container {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  background-color: black;
 }
 
 .top-bar {
   position: absolute;
-  top: 55px;
-  left: 30px;
   z-index: 999;
+  padding: 10px; /* 更好的点击区域 */
+  color: white; /* 图标颜色为白色 */
+  top: 5%;
+  left: 5%;
 }
 
-.top-bar-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.weui-icon-back-arrow {
+  color: white; /* 返回箭头为白色 */
+  font-size: 50px;
 }
 
 .swiper {

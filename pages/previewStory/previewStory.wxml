@@ -1,26 +1,24 @@
 <view class="container">
-  <view class="top-bar">
-    <view class="top-bar-content" bindtap="goBack">
-      <icon class="weui-icon-back-arrow" size="50"></icon>
-    </view>
+  <view class="top-bar" bindtap="goBack">
+    <icon class="weui-icon-back-arrow" size="50"></icon>
   </view>
+
   <swiper
     class="swiper"
     current="{{current}}"
-    indicator-dots="false"
+    indicator-dots="true"
     autoplay="false"
     interval="5000"
     duration="500"
+    indicator-active-color="#ffffff" 
     bindchange="onSwiperChange"
   >
     <block wx:for="{{imagePaths}}" wx:key="index">
       <swiper-item>
         <image
-          src="{{item}}"
-          mode="contain"
+          src="{{imagePaths[index]}}"
+          mode="aspectFit"
           class="image"
-          bindload="onImageLoad"
-          catchtap="onImageTap"
         />
       </swiper-item>
     </block>
