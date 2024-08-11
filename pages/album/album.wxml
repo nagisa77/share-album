@@ -14,6 +14,7 @@
         <text class="default-bg-text">点击以设置封面:)</text>
       </view>
     </block>
+    <view class="album-bg-overlay-top"></view>
     <view class="album-bg-overlay"></view>
     <view class="album-info">
       <text class="album-name">{{album.name}}</text>
