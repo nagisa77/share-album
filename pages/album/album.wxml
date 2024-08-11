@@ -2,7 +2,7 @@
   <!-- Top Bar 区域 -->
   <view class="top-bar" style="opacity: {{topBarOpacity}}"></view>
   <view class="top-bar-content" bindtap="onCameraIconClicked">
-    <icon type="camera" class="weui-icon-camera"></icon>
+    <mp-icon icon="camera" color="black" size="{{25}}" class="icon-camera"></mp-icon>
   </view>
   <!-- Header 区域 -->
   <view class="header" bindtap="onAlbumBackgroundClicked">
@@ -103,4 +103,14 @@
       <view class="weui-toast__content">上传中...</view>
     </view>
   </block>
+
+  <mp-half-screen-dialog 
+  bindbuttontap="buttontap"
+  show="{{showDialog}}"
+  maskClosable="{{false}}" 
+  title="请提供用户信息" 
+  closabled="{{true}}" 
+  subTitle="利用您的头像和ID加入相册"
+  buttons="{{dialogButtons}}"
+  ></mp-half-screen-dialog>
 </scroll-view>

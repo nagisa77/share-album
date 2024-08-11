@@ -1,4 +1,4 @@
-@import "../../weui-wxss/dist/style/weui.wxss";
+@import '../../miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
 
 .content-offset {
   margin-top: 50px; /* 向下偏移 50px */

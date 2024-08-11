@@ -8,7 +8,19 @@ Page({
       records: []    
     },
     loading: false, // 用于显示 loading 状态
-    topBarOpacity: 0 // 初始透明度为0
+    topBarOpacity: 0, // 初始透明度为0
+
+    showDialog: false,
+    dialogButtons: [
+        {
+            type: 'primary',
+            className: '',
+            text: '确认',
+            value: 0
+        }
+    ],
+
+    animation: {}
   },
 
   onShareAppMessage: function (options) {
@@ -32,15 +44,33 @@ Page({
     });
   },
 
+  enableDialog(show) {
+    if (show) {
+      this.animation.translateY(0).step(); // 0 表示滑到视图内部
+      this.setData({
+        animationData: this.animation.export(),
+        showDialog: true
+      });
+    } else {
+      this.animation.translateY('100%').step(); // 100% 表示滑回到视图外部
+      this.setData({
+        animationData: this.animation.export(),
+        showDialog: false
+      });
+    }
+  },
+
   // 预览图片功能
   previewImage(e) {
-    const imageIndex = e.currentTarget.dataset.index;
-    const recordIndex = e.currentTarget.dataset.recordIndex;
-    const imagePaths = this.data.album.records[recordIndex].images;
+    // const imageIndex = e.currentTarget.dataset.index;
+    // const recordIndex = e.currentTarget.dataset.recordIndex;
+    // const imagePaths = this.data.album.records[recordIndex].images;
     
-    wx.navigateTo({
-      url: `/pages/previewStory/previewStory?imagePaths=${JSON.stringify(imagePaths)}&current=${imageIndex}`
-    });
+    // wx.navigateTo({
+    //   url: `/pages/previewStory/previewStory?imagePaths=${JSON.stringify(imagePaths)}&current=${imageIndex}`
+    // });
+
+    this.enableDialog(true); 
   }, 
 
   onCameraIconClicked: function() {
@@ -86,6 +116,11 @@ Page({
   },
   
   onLoad: function(options) {
+    this.animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: 'ease',
+    });
+
     if (options.albumId) {
       console.info(`加入相册: ${options.albumId}`);
       this.setData({

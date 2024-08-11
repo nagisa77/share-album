@@ -1,5 +1,5 @@
 /* 引入WeUI样式 */
-@import "../../weui-wxss/dist/style/weui.wxss";
+@import '../../miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
 
 .container {
   padding-top: 150px;

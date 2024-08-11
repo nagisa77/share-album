@@ -1,4 +1,5 @@
-@import "../../weui-wxss/dist/style/weui.wxss";
+
+@import '../../miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
 
 .container {
   display: flex;
@@ -27,7 +28,7 @@
   transition: opacity 0.3s ease;
 }
 
-.top-bar-content .weui-icon-camera {
+.top-bar-content {
   color: black;
   position: fixed;
   top: 52px;
@@ -37,8 +38,14 @@
   z-index: 1000; 
   display: flex;
   align-items: center;
-
 }
+
+.icon-camera {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+}
+
 
 .top-bar-content {
   font-size: 18px;
