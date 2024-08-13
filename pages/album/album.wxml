@@ -91,7 +91,7 @@
     </block>
     <block wx:else>
       <view class="weui-loadmore weui-loadmore_line">
-        <view class="weui-loadmore__tips">暂无数据</view>
+          <view class="weui-loadmore__tips">没有更多了 :-) 点击左上角发布</view>
       </view>
     </block>
   </view>
@@ -104,14 +104,4 @@
       <view class="weui-toast__content">上传中...</view>
     </view>
   </block>
-
-  <mp-half-screen-dialog 
-  bindbuttontap="buttontap"
-  show="{{showDialog}}"
-  maskClosable="{{false}}" 
-  title="请提供用户信息" 
-  closabled="{{true}}" 
-  subTitle="利用您的头像和ID加入相册"
-  buttons="{{dialogButtons}}"
-  ></mp-half-screen-dialog>
 </scroll-view>

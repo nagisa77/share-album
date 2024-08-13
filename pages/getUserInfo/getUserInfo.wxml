@@ -1,0 +1,24 @@
+<view class="container">
+  <!-- 标题和副标题 -->
+  <view class="weui-cells__title" style="text-align: center;">完善以下信息以加入相册</view>
+
+  <view class="content">
+    <view class="weui-cells weui-cells_form">
+      <view class="weui-cell">
+        <view class="weui-cell__hd"><label class="weui-label">用户头像</label></view>
+        <view class="weui-cell__bd">
+          <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+            <image class="userAvatar" src="{{userAvatarUrl}}" mode="aspectFill" />
+          </button>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd"><label class="weui-label">用户昵称</label></view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入用户昵称" bindinput="onUserNameInput" />
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn weui-btn_primary create-button" bindtap="onConfirmClicked">确认</button>
+  </view>
+</view>

@@ -3,7 +3,8 @@
     "pages/album/album",
     "pages/createStory/createStory",
     "pages/createAlbum/createAlbum",
-    "pages/previewStory/previewStory"
+    "pages/previewStory/previewStory",
+    "pages/getUserInfo/getUserInfo"
   ],
   "window": {
     "navigationBarTextStyle": "black",
